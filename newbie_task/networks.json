@@ -1,0 +1,14 @@
+{
+  "main_net": {
+    "Contract": {
+      "address": "0x6a994E21ae927De870954c061487e08Ba32c87Af",
+      "startBlock": 10000
+    }
+  },
+  "test_net": {
+    "Contract": {
+      "address": "0x6a994E21ae927De870954c061487e08Ba32c87Af",
+      "startBlock": 10000
+    }
+  }
+}
