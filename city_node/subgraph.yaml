@@ -4,7 +4,7 @@ schema:
 dataSources:
   - kind: ethereum
     name: IntoUserLocation
-    network: match_testnet
+    network: testnet
     source:
       address: "0x12CEC1A760E1e25Ce5b143cDB9D115D83603fAba"
       abi: IntoUserLocation
