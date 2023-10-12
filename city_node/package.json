@@ -4,7 +4,6 @@
   "scripts": {
     "build-dev": "rm -rf subgraph.yaml && cp subgraph-dev.yaml subgraph.yaml &&graph codegen && graph build",
     "build-main": "rm -rf subgraph.yaml && cp subgraph-main.yaml subgraph.yaml graph codegen && graph build",
-    "build": "graph build",
     "create-dev": "graph create userlocation --node http://8.130.102.48:8020",
     "deploy-dev": "graph deploy userlocation --ipfs http://8.130.102.48:5001 --node http://8.130.102.48:8020/",
     "remove-dev": "graph remove userlocation --node http://8.130.102.48:8020/",
