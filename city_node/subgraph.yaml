@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: IntoUserLocation
-    network: match_testnet
+    network: match_mainnet
     source:
-      address: "0x12CEC1A760E1e25Ce5b143cDB9D115D83603fAba"
+      address: "0x1B535f616B0465891Bc0bb71307A8781A8cCB8f2"
       abi: IntoUserLocation
-      startBlock: 6311643
+      startBlock: 2307936
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
