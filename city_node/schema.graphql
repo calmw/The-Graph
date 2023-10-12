@@ -7,6 +7,15 @@ type UserLocationRecord  @entity {
     ctime:BigInt!
 }
 
+type SuretyRecord  @entity {
+    id: ID!
+    pioneerAddress: Bytes!
+    amount:BigInt!
+    month:BigInt!
+    txHash:Bytes!
+    ctime:BigInt!
+}
+
 
 #event UserLocationRecord(
 #address user,

@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: IntoUserLocation
-    network: match_mainnet
+    network: match_testnet
     source:
-      address: "0x1B535f616B0465891Bc0bb71307A8781A8cCB8f2"
+      address: "0x556814d8C9B85B32181F2cCcB9E02b7FE2E69277"
       abi: IntoUserLocation
-      startBlock: 2307936
+      startBlock: 6032142
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -21,7 +21,27 @@ dataSources:
       eventHandlers:
         - event: UserLocationRecord(address,bytes32,string)
           handler: handleUserLocationRecordLog
-
       file: ./src/IntoUserLocation.ts
-  
+
+  - kind: ethereum
+    name: IntoCityPioneer
+    network: match_testnet
+    source:
+      address: "0x11Ef2544A6f62a2cF589390325ab0A56df1eeF15"
+      abi: IntoCityPioneer
+      startBlock: 6032142
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - UserLocationRecord
+      abis:
+        - name: IntoCityPioneer
+          file: ./abis/IntoCityPioneer.json
+      eventHandlers:
+        - event: SuretyRecord(address,uint256,uint256)
+          handler: handleSuretyRecordLog
+      file: ./src/IntoCityPioneer.ts
+
   
