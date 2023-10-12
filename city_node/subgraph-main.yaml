@@ -3,25 +3,25 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: NewbieTask
-    network: mainnet
+    name: IntoUserLocation
+    network: match_testnet
     source:
-      address: "0xB7a38562cEd5098d4f399dbC0533AbC14ccC3413"
-      abi: NewbieTask
-      startBlock: 6311643
+      address: "0x1B535f616B0465891Bc0bb71307A8781A8cCB8f2"
+      abi: IntoUserLocation
+      startBlock: 2307936
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - NewbieTask
+        - UserLocationRecord
       abis:
-        - name: NewbieTask
-          file: ./abis/UserLocation.json
+        - name: IntoUserLocation
+          file: ./abis/IntoUserLocation.json
       eventHandlers:
-        - event: ClaimRecord(uint256,address,uint256,uint256,uint256)
-          handler: handleClaimRecordLog
+        - event: UserLocationRecord(address,bytes32,string)
+          handler: handleUserLocationRecordLog
 
-      file: ./src/IntoNewbieTask.ts
+      file: ./src/IntoUserLocation.ts
   
   
