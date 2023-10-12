@@ -1,9 +1,15 @@
-type ClaimRecord  @entity {
+type UserLocationRecord  @entity {
     id: ID!
-    tid: BigInt!
     user: Bytes!
-    claimType: BigInt!
-    amount: BigInt!
-    txHash: Bytes!
-    ctime: BigInt!
+    cityId: Bytes!
+    txHash:Bytes!
+    location:String
+    ctime:BigInt!
 }
+
+
+#event UserLocationRecord(
+#address user,
+#bytes32 cityId,
+#string location
+#);

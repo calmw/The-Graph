@@ -17,7 +17,7 @@ dataSources:
         - NewbieTask
       abis:
         - name: NewbieTask
-          file: ./abis/NewbieTask.json
+          file: ./abis/UserLocation.json
       eventHandlers:
         - event: ClaimRecord(uint256,address,uint256,uint256,uint256)
           handler: handleClaimRecordLog

@@ -19,7 +19,7 @@ services:
       postgres_pass: let_me_in_match_test_graph
       postgres_db: graph-node
       ipfs: 'ipfs:5001'
-      ethereum: 'match_test:https://testnet-rpc.d2ao.com/'
+      ethereum: 'match_testnet:https://testnet-rpc.d2ao.com/'
       GRAPH_LOG: info
   ipfs:
     image: ipfs/kubo:v0.14.0

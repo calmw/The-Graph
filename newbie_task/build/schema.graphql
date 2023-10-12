@@ -1,9 +1,0 @@
-type ClaimRecord  @entity {
-    id: ID!
-    tid: BigInt!
-    user: Bytes!
-    claimType: BigInt!
-    amount: BigInt!
-    txHash: Bytes!
-    ctime: BigInt!
-}

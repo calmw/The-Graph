@@ -2,12 +2,15 @@
   "name": "statistics-subgraph",
   "license": "MIT",
   "scripts": {
-    "build-dev": "rm -rf subgraph.yaml && cp subgraph-dev.yaml subgraph.yaml && graph codegen && graph build",
+    "build-dev": "rm -rf subgraph.yaml && cp subgraph-dev.yaml subgraph.yaml &&graph codegen && graph build",
     "build-main": "rm -rf subgraph.yaml && cp subgraph-main.yaml subgraph.yaml graph codegen && graph build",
-    "build-prod": "graph codegen && graph build",
-    "create": "graph create into-newbie-task --node http://127.0.0.1:8020",
-    "deploy": "graph deploy into-newbie-task --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
-    "remove": "graph remove into-newbie-task --node http://localhost:8020/"
+    "build": "graph build",
+    "create-dev": "graph create userlocation --node http://8.130.102.48:8020",
+    "deploy-dev": "graph deploy userlocation --ipfs http://8.130.102.48:5001 --node http://8.130.102.48:8020/",
+    "remove-dev": "graph remove userlocation --node http://8.130.102.48:8020/",
+    "create-main": "graph create userlocation --node http://8.130.102.48:7020",
+    "deploy-main": "graph deploy userlocation --ipfs http://8.130.102.48:9001 --node http://8.130.102.48:7020/",
+    "remove-main": "graph remove userlocation --node http://8.130.102.48:7020/"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.49.0",
