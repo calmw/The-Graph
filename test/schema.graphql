@@ -1,0 +1,6 @@
+type Delegate  @entity {
+    id: ID!
+    txHash:Bytes!
+    amount:BigInt!
+    ctime:BigInt!
+}

@@ -6,7 +6,7 @@ dataSources:
     name: NewbieTask
     network: testnet
     source:
-      address: "0xB7a38562cEd5098d4f399dbC0533AbC14ccC3412"
+      address: "0xB7a38562cEd5098d4f399dbC0533AbC14ccC3413"
       abi: NewbieTask
       startBlock: 6311643
     mapping:
@@ -19,8 +19,8 @@ dataSources:
         - name: NewbieTask
           file: ./abis/NewbieTask.json
       eventHandlers:
-        - event: ClaimRecord(uint256,address,uint256,uint256,uint256)
-          handler: handleClaimRecordLog
+        - event: ClaimLog(address,uint256,uint256)
+          handler: handleClaimLog
 
       file: ./src/IntoNewbieTask.ts
   

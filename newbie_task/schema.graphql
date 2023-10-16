@@ -1,6 +1,5 @@
-type ClaimRecord  @entity {
+type ClaimLog  @entity {
     id: ID!
-    tid: BigInt!
     user: Bytes!
     claimType: BigInt!
     amount: BigInt!

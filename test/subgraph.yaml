@@ -1,0 +1,28 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: IntoTest
+    network: match_testnet
+    source:
+      address: "0x8a33644c9A5c62b5Eb8e63Af2e26856BDCe78474"
+      abi: IntoTest
+      startBlock: 6581482
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Delegate
+      abis:
+        - name: IntoTest
+          file: ./abis/IntoTest.json
+      eventHandlers:
+        - event: Delegate(uint256)
+          handler: handleDelegateLog
+      file: ./src/Test.ts
+
+
+
+  

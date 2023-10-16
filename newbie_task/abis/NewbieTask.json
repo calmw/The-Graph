@@ -1,5 +1,42 @@
 [
   {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "userOne_",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "userTwo_",
+        "type": "address"
+      }
+    ],
+    "name": "senderError",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user_",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "claimType_",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "status_",
+        "type": "bool"
+      }
+    ],
+    "name": "taskStatusError",
+    "type": "error"
+  },
+  {
     "anonymous": false,
     "inputs": [
       {
@@ -30,12 +67,6 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "uint256",
-        "name": "tid",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
         "internalType": "address",
         "name": "user",
         "type": "address"
@@ -51,15 +82,9 @@
         "internalType": "uint256",
         "name": "claimType",
         "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "ctime",
-        "type": "uint256"
       }
     ],
-    "name": "ClaimRecord",
+    "name": "ClaimLog",
     "type": "event"
   },
   {
@@ -110,11 +135,50 @@
     "inputs": [
       {
         "internalType": "address",
+        "name": "faceAuthAddress_",
+        "type": "address"
+      }
+    ],
+    "name": "adminSetFaceAuth",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "bindingAddress_",
+        "type": "address"
+      }
+    ],
+    "name": "adminSetIntoBinding",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "socialMiningAddress_",
+        "type": "address"
+      }
+    ],
+    "name": "adminSetIntoSocialMining",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
         "name": "toxAddress_",
         "type": "address"
       }
     ],
-    "name": "adminSetToxAddress",
+    "name": "adminSetTox",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -146,16 +210,66 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "binding",
+    "outputs": [
+      {
+        "internalType": "contract IntoBinding",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "claimType_",
-        "type": "uint256"
+        "internalType": "bytes",
+        "name": "data",
+        "type": "bytes"
       }
     ],
     "name": "claim",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "claimRecord",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "faceAuth",
+    "outputs": [
+      {
+        "internalType": "contract FaceAuth",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -205,6 +319,19 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "socialMining",
+    "outputs": [
+      {
+        "internalType": "contract IntoSocialMining",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "uint256",
@@ -225,49 +352,12 @@
   },
   {
     "inputs": [],
-    "name": "tid",
+    "name": "tox",
     "outputs": [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "toxAddress",
-    "outputs": [
-      {
-        "internalType": "address",
+        "internalType": "contract IERC20",
         "name": "",
         "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "userClaimRecord",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
       }
     ],
     "stateMutability": "view",

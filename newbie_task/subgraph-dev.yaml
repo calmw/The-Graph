@@ -17,10 +17,10 @@ dataSources:
         - NewbieTask
       abis:
         - name: NewbieTask
-          file: ./abis/UserLocation.json
+          file: ./abis/NewbieTask.json
       eventHandlers:
-        - event: ClaimRecord(uint256,address,uint256,uint256,uint256)
-          handler: handleClaimRecordLog
+        - event: ClaimLog(address,uint256,uint256)
+          handler: handleClaimLog
 
       file: ./src/IntoNewbieTask.ts
   

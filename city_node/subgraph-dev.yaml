@@ -21,7 +21,7 @@ dataSources:
       eventHandlers:
         - event: UserLocationRecord(address,bytes32,string)
           handler: handleUserLocationRecordLog
-      file: ./src/IntoUserLocation.ts
+      file: ./src/Test.ts
 
   - kind: ethereum
     name: IntoCityPioneer
