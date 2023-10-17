@@ -4,9 +4,9 @@ schema:
 dataSources:
   - kind: ethereum
     name: NewbieTask
-    network: testnet
+    network: match_testnet
     source:
-      address: "0xB7a38562cEd5098d4f399dbC0533AbC14ccC3413"
+      address: "0x9A448518168df1a49ad4B018a208821b967D147A"
       abi: NewbieTask
       startBlock: 6311643
     mapping:
