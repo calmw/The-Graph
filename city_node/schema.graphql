@@ -16,9 +16,30 @@ type SuretyRecord  @entity {
     ctime:BigInt!
 }
 
+type DailyRewardRecord  @entity {
+    id: ID!
+    pioneerAddress: Bytes!
+    toxReward:BigInt!
+    foundsReward:BigInt!
+    delegateReward:BigInt!
+    txHash:Bytes!
+    ctime:BigInt!
+}
 
-#event UserLocationRecord(
-#address user,
-#bytes32 cityId,
-#string location
-#);
+type WithdrawalRewardRecord  @entity {
+    id: ID!
+    pioneerAddress: Bytes!
+    reward:BigInt!
+    rewardType:BigInt!
+    txHash:Bytes!
+    ctime:BigInt!
+}
+
+type RechargeRecord  @entity {
+    id: ID!
+    user: Bytes!
+    countyId:Bytes!
+    amount:BigInt!
+    txHash:Bytes!
+    ctime:BigInt!
+}

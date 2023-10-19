@@ -31,7 +31,7 @@
       {
         "indexed": false,
         "internalType": "address",
-        "name": "pioneerAddress",
+        "name": "user",
         "type": "address"
       },
       {
@@ -45,15 +45,9 @@
         "internalType": "uint256",
         "name": "amount",
         "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "ctime",
-        "type": "uint256"
       }
     ],
-    "name": "DailyIncreaseDelegateRecord",
+    "name": "DecreaseCityDelegate",
     "type": "event"
   },
   {
@@ -62,29 +56,23 @@
       {
         "indexed": false,
         "internalType": "address",
-        "name": "pioneerAddress",
+        "name": "user",
         "type": "address"
       },
       {
         "indexed": false,
-        "internalType": "uint256",
-        "name": "toxReward",
-        "type": "uint256"
+        "internalType": "bytes32",
+        "name": "cityId",
+        "type": "bytes32"
       },
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "foundsReward",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "delegateReward",
+        "name": "amount",
         "type": "uint256"
       }
     ],
-    "name": "DailyRewardRecord",
+    "name": "IncreaseCityDelegate",
     "type": "event"
   },
   {
@@ -106,8 +94,14 @@
       {
         "indexed": false,
         "internalType": "address",
-        "name": "pioneerAddress",
+        "name": "user",
         "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "countyId",
+        "type": "bytes32"
       },
       {
         "indexed": false,
@@ -118,50 +112,12 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "month",
+        "name": "time",
         "type": "uint256"
       }
     ],
-    "name": "SuretyRecord",
+    "name": "RechargeRecord",
     "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "pioneerAddress",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "reward",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "rewardType",
-        "type": "uint256"
-      }
-    ],
-    "name": "WithdrawalRewardRecord",
-    "type": "event"
-  },
-  {
-    "inputs": [],
-    "name": "TOXAddress",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
   },
   {
     "inputs": [
@@ -179,22 +135,36 @@
   {
     "inputs": [
       {
+        "internalType": "bytes32",
+        "name": "chengShiId_",
+        "type": "bytes32"
+      },
+      {
         "internalType": "uint256",
-        "name": "chengShiLevel_",
+        "name": "level_",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "month_",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "point_",
+        "name": "surety_",
         "type": "uint256"
       }
     ],
-    "name": "adminSetAssessmentReturnCriteria",
+    "name": "adminEditSurety",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "adminPopPioneerChengShiId",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "adminRemoveAllPioneer",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -202,45 +172,40 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "chengShiLevel_",
-        "type": "uint256"
+        "internalType": "bytes32",
+        "name": "chengShiId_",
+        "type": "bytes32"
       },
-      {
-        "internalType": "uint256",
-        "name": "month_",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "point_",
-        "type": "uint256"
-      }
-    ],
-    "name": "adminSetAssessmentReturnRate",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
       {
         "internalType": "address",
         "name": "pioneer_",
         "type": "address"
+      }
+    ],
+    "name": "adminRemovePioneer",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "chengShiId_",
+        "type": "bytes32"
       },
       {
         "internalType": "uint256",
-        "name": "day_",
+        "name": "level_",
         "type": "uint256"
       },
       {
-        "internalType": "bool",
-        "name": "execution_",
-        "type": "bool"
+        "internalType": "uint256",
+        "name": "surety_",
+        "type": "uint256"
       }
     ],
-    "name": "adminSetCheckPioneerDailyStatus",
+    "name": "adminSetChengShiLevelAndSurety",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -249,16 +214,109 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "pioneer_",
+        "name": "cityPioneerAddress_",
+        "type": "address"
+      }
+    ],
+    "name": "adminSetCityPioneerAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "userAddress_",
         "type": "address"
       },
       {
         "internalType": "uint256",
         "name": "amount_",
         "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "setType",
+        "type": "uint256"
       }
     ],
-    "name": "adminSetPioneerPaySurety",
+    "name": "adminSetDelegate",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "foundsAddress_",
+        "type": "address"
+      }
+    ],
+    "name": "adminSetFoundsAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "chengShiId_",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "pioneer_",
+        "type": "address"
+      }
+    ],
+    "name": "adminSetPioneer",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "adminSetRechargeAmount",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint56",
+        "name": "secondsPerDay_",
+        "type": "uint56"
+      }
+    ],
+    "name": "adminSetSecondsPerDay",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "userLocationAddress_",
+        "type": "address"
+      }
+    ],
+    "name": "adminSetUserLocationAddress",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -279,17 +337,12 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
       }
     ],
-    "name": "alreadyRewardRate",
+    "name": "allCityDailyFoundsTotal",
     "outputs": [
       {
         "internalType": "uint256",
@@ -301,14 +354,8 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "alreadyRewardRateTotal",
+    "inputs": [],
+    "name": "allCityDelegateTotal",
     "outputs": [
       {
         "internalType": "uint256",
@@ -320,19 +367,8 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "assessmentCriteria",
+    "inputs": [],
+    "name": "allCityFoundsTotal",
     "outputs": [
       {
         "internalType": "uint256",
@@ -349,19 +385,14 @@
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
       }
     ],
-    "name": "assessmentReturnCriteria",
+    "name": "allCityIds",
     "outputs": [
       {
-        "internalType": "uint256",
+        "internalType": "bytes32",
         "name": "",
-        "type": "uint256"
+        "type": "bytes32"
       }
     ],
     "stateMutability": "view",
@@ -373,14 +404,22 @@
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
-      },
+      }
+    ],
+    "name": "allDailyFoundsTotal",
+    "outputs": [
       {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
       }
     ],
-    "name": "assessmentReturnRate",
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "allFoundsTotal",
     "outputs": [
       {
         "internalType": "uint256",
@@ -407,12 +446,12 @@
   {
     "inputs": [
       {
-        "internalType": "address",
+        "internalType": "bytes32",
         "name": "",
-        "type": "address"
+        "type": "bytes32"
       }
     ],
-    "name": "benefitPackageReward",
+    "name": "chengShiLevel",
     "outputs": [
       {
         "internalType": "uint256",
@@ -426,12 +465,12 @@
   {
     "inputs": [
       {
-        "internalType": "address",
+        "internalType": "uint256",
         "name": "",
-        "type": "address"
+        "type": "uint256"
       }
     ],
-    "name": "benefitPackageRewardReceived",
+    "name": "chengShiLevelSurety",
     "outputs": [
       {
         "internalType": "uint256",
@@ -445,17 +484,17 @@
   {
     "inputs": [
       {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "name": "chengShiPioneer",
+    "outputs": [
+      {
         "internalType": "address",
         "name": "",
         "type": "address"
-      }
-    ],
-    "name": "benefitPackageRewardStatus",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
       }
     ],
     "stateMutability": "view",
@@ -464,46 +503,36 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
+        "internalType": "bytes32",
         "name": "",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
+        "type": "bytes32"
       }
     ],
-    "name": "checkPioneerDailyStatus",
+    "name": "chengShiRechargeWeight",
     "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
       {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
       }
     ],
-    "name": "checkPioneerStatus",
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "name": "cityDelegate",
     "outputs": [
       {
-        "internalType": "bool",
+        "internalType": "uint256",
         "name": "",
-        "type": "bool"
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -512,9 +541,9 @@
   {
     "inputs": [
       {
-        "internalType": "address",
+        "internalType": "bytes32",
         "name": "",
-        "type": "address"
+        "type": "bytes32"
       },
       {
         "internalType": "uint256",
@@ -522,12 +551,12 @@
         "type": "uint256"
       }
     ],
-    "name": "checkRewardStatus",
+    "name": "cityDelegateRecord",
     "outputs": [
       {
-        "internalType": "bool",
+        "internalType": "uint256",
         "name": "",
-        "type": "bool"
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -536,17 +565,165 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "pioneer_",
-        "type": "address"
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
       }
     ],
-    "name": "checkSurety",
+    "name": "cityDelegateTotal",
     "outputs": [
       {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "cityFoundsRecord",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "name": "cityFoundsTotal",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "name": "cityLevel",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "cityMaxDelegate",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "cityNewlyDelegateRecord",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "name": "cityOrChengShiWeightTotal",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "name": "cityPioneer",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
       }
     ],
     "stateMutability": "view",
@@ -554,12 +731,74 @@
   },
   {
     "inputs": [],
-    "name": "cityAddress",
+    "name": "cityPioneerAddress",
     "outputs": [
       {
         "internalType": "address",
         "name": "",
         "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "name": "cityPioneerAssessment",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "name": "cityRechargeTotal",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "countyNewlyPioneerDelegateRecord",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -588,11 +827,39 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "",
+        "name": "user_",
         "type": "address"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "countyId_",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount_",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "today",
+        "type": "uint256"
       }
     ],
-    "name": "delegateReward",
+    "name": "descCountyOrChengShiDelegate",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "name": "earnestMoney",
     "outputs": [
       {
         "internalType": "uint256",
@@ -604,19 +871,13 @@
     "type": "function"
   },
   {
-    "inputs": [
+    "inputs": [],
+    "name": "foundsAddress",
+    "outputs": [
       {
         "internalType": "address",
         "name": "",
         "type": "address"
-      }
-    ],
-    "name": "delegateRewardReceived",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -625,45 +886,12 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
+        "internalType": "bytes32",
+        "name": "chengShiId",
+        "type": "bytes32"
       }
     ],
-    "name": "delegateRewardStatus",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "depositSurety",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "descBenefitPackageReward",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "failedAt",
+    "name": "getChengShiRechargeWeight",
     "outputs": [
       {
         "internalType": "uint256",
@@ -678,73 +906,21 @@
     "inputs": [
       {
         "internalType": "bytes32",
-        "name": "",
+        "name": "chengShiId_",
         "type": "bytes32"
+      },
+      {
+        "internalType": "uint256",
+        "name": "day",
+        "type": "uint256"
       }
     ],
-    "name": "failedDelegate",
+    "name": "getDailyDelegateByChengShiID",
     "outputs": [
       {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "fundsReward",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "fundsRewardReceived",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "fundsRewardStatus",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
       }
     ],
     "stateMutability": "view",
@@ -764,8 +940,19 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "getPioneerNumber",
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "cityId_",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "uint256",
+        "name": "day",
+        "type": "uint256"
+      }
+    ],
+    "name": "getDelegate",
     "outputs": [
       {
         "internalType": "uint256",
@@ -778,7 +965,57 @@
   },
   {
     "inputs": [],
-    "name": "getSurety",
+    "name": "getFifteenDayAverageFounds",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "cityId_",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "uint256",
+        "name": "day",
+        "type": "uint256"
+      }
+    ],
+    "name": "getFounds",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getPioneerAndCityNodeNumber",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getPioneerCityNumber",
     "outputs": [
       {
         "internalType": "uint256",
@@ -793,11 +1030,71 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "pioneer",
+        "name": "pioneer_",
         "type": "address"
       }
     ],
-    "name": "initPioneer",
+    "name": "getSuretyByPioneerAddress",
+    "outputs": [],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "hasSetPioneer",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user_",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "countyId_",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount_",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "today",
+        "type": "uint256"
+      }
+    ],
+    "name": "incrCountyOrChengShiDelegate",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "chengShiId_",
+        "type": "bytes32"
+      }
+    ],
+    "name": "initCityRechargeWeight",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -831,12 +1128,12 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
+        "internalType": "bytes32",
+        "name": "chengShiId",
+        "type": "bytes32"
       }
     ],
-    "name": "isPioneer",
+    "name": "isPioneerChengShi",
     "outputs": [
       {
         "internalType": "bool",
@@ -855,7 +1152,26 @@
         "type": "address"
       }
     ],
-    "name": "isPioneerReturnSurety",
+    "name": "pioneerChengShi",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "chengShiId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "pioneerChengShiIdExits",
     "outputs": [
       {
         "internalType": "bool",
@@ -867,23 +1183,22 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "miningAddress",
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "pioneerChengShiIds",
     "outputs": [
       {
-        "internalType": "address",
+        "internalType": "bytes32",
         "name": "",
-        "type": "address"
+        "type": "bytes32"
       }
     ],
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "paySurety",
-    "outputs": [],
-    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -894,90 +1209,45 @@
         "type": "address"
       }
     ],
-    "name": "pioneerInfo",
+    "name": "pioneerCity",
     "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "pioneerCityIds",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
       {
         "internalType": "address",
         "name": "pioneerAddress",
         "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "ctime",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "cityLevel",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bool",
-        "name": "assessmentMonthStatus",
-        "type": "bool"
-      },
-      {
-        "internalType": "bool",
-        "name": "assessmentStatus",
-        "type": "bool"
-      },
-      {
-        "internalType": "bool",
-        "name": "returnSuretyStatus",
-        "type": "bool"
-      },
-      {
-        "internalType": "uint256",
-        "name": "returnSuretyRate",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "returnSuretyTime",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "suretyTime",
-        "type": "uint256"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "pioneerPaySurety",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "pioneerAddress_",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes32",
-        "name": "chengShiId_",
-        "type": "bytes32"
-      }
-    ],
-    "name": "pioneerTask",
+    "name": "pioneerDailyTask",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -985,17 +1255,65 @@
   {
     "inputs": [
       {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      },
+      {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
       }
     ],
-    "name": "pioneers",
+    "name": "rechargeDailyTotalWeightRecord",
     "outputs": [
       {
-        "internalType": "address",
+        "internalType": "uint256",
         "name": "",
-        "type": "address"
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "rechargeDailyWeight",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "rechargeDailyWeightRecord",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -1003,7 +1321,7 @@
   },
   {
     "inputs": [],
-    "name": "presidencyTime",
+    "name": "rechargeWeight",
     "outputs": [
       {
         "internalType": "uint256",
@@ -1023,19 +1341,6 @@
       }
     ],
     "name": "removeAdmin",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "pioneer_",
-        "type": "address"
-      }
-    ],
-    "name": "removePioneer",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1063,86 +1368,48 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "pioneer_",
-        "type": "address"
+        "internalType": "bytes32",
+        "name": "chengShiId_",
+        "type": "bytes32"
       }
     ],
-    "name": "setIsPioneerReturnSurety",
+    "name": "setChengShiPioneerAssessment",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "startTime",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
+        "internalType": "bytes32",
+        "name": "cityId_",
+        "type": "bytes32"
       },
       {
         "internalType": "uint256",
-        "name": "",
+        "name": "amount_",
         "type": "uint256"
-      }
-    ],
-    "name": "successAt",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "successTime",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
       },
       {
         "internalType": "uint256",
-        "name": "",
+        "name": "day_",
         "type": "uint256"
       }
     ],
-    "name": "suretyMonthWeight",
+    "name": "setCityMaxDelegate",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "name": "surety",
     "outputs": [
       {
         "internalType": "uint256",
@@ -1157,62 +1424,26 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "",
+        "name": "_addr",
         "type": "address"
       }
     ],
-    "name": "suretyReward",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
+    "name": "syncCityCheck",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [
       {
         "internalType": "address",
-        "name": "",
+        "name": "user",
         "type": "address"
       }
     ],
-    "name": "suretyRewardRecord",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "testValue",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
+    "name": "triggerPioneerTask",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -1226,34 +1457,6 @@
       }
     ],
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "withdrawalBenefitPackageReward",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "withdrawalDelegateReward",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "withdrawalFundsReward",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "withdrawalSuretyReward",
-    "outputs": [],
-    "stateMutability": "nonpayable",
     "type": "function"
   }
 ]

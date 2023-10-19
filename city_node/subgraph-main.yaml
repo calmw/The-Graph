@@ -21,7 +21,53 @@ dataSources:
       eventHandlers:
         - event: UserLocationRecord(address,bytes32,string)
           handler: handleUserLocationRecordLog
+      file: ./src/IntoUserLocation.ts
 
-      file: ./src/Test.ts
-  
-  
+  - kind: ethereum
+    name: IntoCityPioneer
+    network: match_mainnet
+    source:
+      address: "0x60C541388077d524178521A7ceD95d0c7a016B72"
+      abi: IntoCityPioneer
+      startBlock: 2414639
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - WithdrawalRewardRecord
+        - DailyRewardRecord
+        - SuretyRecord
+      abis:
+        - name: IntoCityPioneer
+          file: ./abis/IntoCityPioneer.json
+      eventHandlers:
+        - event: SuretyRecord(address,uint256,uint256)
+          handler: handleSuretyRecordLog
+        - event: DailyRewardRecord(address,uint256,uint256,uint256)
+          handler: handleDailyRewardRecordLog
+        - event: WithdrawalRewardRecord(address,uint256,uint256)
+          handler: handleWithdrawalRewardRecordLog
+      file: ./src/IntoCityPioneer.ts
+
+  - kind: ethereum
+    name: IntoCity
+    network: match_mainnet
+    source:
+      address: "0xebD06631510A66968f0379A4deB896d3eE7DD6ED"
+      abi: IntoCity
+      startBlock: 2307995
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - RechargeRecord
+      abis:
+        - name: IntoCity
+          file: ./abis/IntoCity.json
+      eventHandlers:
+        - event: RechargeRecord(address,bytes32,uint256,uint256)
+          handler: handleRechargeRecordLog
+      file: ./src/IntoCity.ts
+
