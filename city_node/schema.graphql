@@ -4,7 +4,7 @@ type UserLocationRecord  @entity {
     cityId: Bytes!
     txHash:Bytes!
     location:String
-    ctime:BigInt!
+    ctime:String!
 }
 
 type SuretyRecord  @entity {
@@ -13,7 +13,7 @@ type SuretyRecord  @entity {
     amount:BigInt!
     month:BigInt!
     txHash:Bytes!
-    ctime:BigInt!
+    ctime:String!
 }
 
 type DailyRewardRecord  @entity {
@@ -23,7 +23,7 @@ type DailyRewardRecord  @entity {
     foundsReward:BigInt!
     delegateReward:BigInt!
     txHash:Bytes!
-    ctime:BigInt!
+    ctime:String!
 }
 
 type WithdrawalRewardRecord  @entity {
@@ -32,7 +32,7 @@ type WithdrawalRewardRecord  @entity {
     reward:BigInt!
     rewardType:BigInt!
     txHash:Bytes!
-    ctime:BigInt!
+    ctime:String!
 }
 
 type RechargeRecord  @entity {
@@ -41,5 +41,5 @@ type RechargeRecord  @entity {
     countyId:Bytes!
     amount:BigInt!
     txHash:Bytes!
-    ctime:BigInt!
+    ctime:String!
 }

@@ -3,8 +3,10 @@ import {
     SuretyRecord as SuretyRecordEvent,
     WithdrawalRewardRecord as WithdrawalRewardRecordEvent
 } from "../generated/IntoCityPioneer/IntoCityPioneer"
-import {DailyRewardRecord, SuretyRecord, WithdrawalRewardRecord} from "../generated/schema" // 这里的名字随graphQl文件中定义的Entity
+import {DailyRewardRecord, SuretyRecord, WithdrawalRewardRecord} from "../generated/schema"
 import {Address, BigInt, Bytes} from "@graphprotocol/graph-ts";
+import {timestampToDatetime} from "./utils/constants";
+
 
 // 这里面可以写多个handler
 
@@ -14,7 +16,7 @@ export function handleSuretyRecordLog(event: SuretyRecordEvent): void {
     suretyRecord.amount = event.params.amount
     suretyRecord.month = event.params.month
     suretyRecord.txHash = event.transaction.hash
-    suretyRecord.ctime = event.block.timestamp
+    suretyRecord.ctime = timestampToDatetime(event.block.timestamp.toI64())
     suretyRecord.save()
 }
 
@@ -25,7 +27,7 @@ export function handleDailyRewardRecordLog(event: DailyRewardRecordEvent): void 
     dailyRewardRecord.foundsReward = event.params.foundsReward
     dailyRewardRecord.delegateReward = event.params.delegateReward
     dailyRewardRecord.txHash = event.transaction.hash
-    dailyRewardRecord.ctime = event.block.timestamp
+    dailyRewardRecord.ctime =  timestampToDatetime(event.block.timestamp.toI64())
     dailyRewardRecord.save()
 }
 
@@ -35,7 +37,7 @@ export function handleWithdrawalRewardRecordLog(event: WithdrawalRewardRecordEve
     withdrawalRewardRecord.reward = event.params.reward
     withdrawalRewardRecord.rewardType = event.params.rewardType
     withdrawalRewardRecord.txHash = event.transaction.hash
-    withdrawalRewardRecord.ctime = event.block.timestamp
+    withdrawalRewardRecord.ctime =  timestampToDatetime(event.block.timestamp.toI64())
     withdrawalRewardRecord.save()
 }
 
@@ -47,4 +49,5 @@ function createEventID(blockNumber: BigInt, logIndex: BigInt): string {
 function createResolverID(node: Bytes, resolver: Address): string {
     return resolver.toHexString().concat('-').concat(node.toHexString())
 }
+
 

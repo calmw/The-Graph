@@ -4,5 +4,5 @@ type ClaimLog  @entity {
     claimType: BigInt!
     amount: BigInt!
     txHash: Bytes!
-    ctime: BigInt!
+    ctime:String!
 }

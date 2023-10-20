@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: NewbieTask
-    network: mainnet
+    network: match_mainnet
     source:
-      address: "0xB7a38562cEd5098d4f399dbC0533AbC14ccC3413"
+      address: "0xD3bB31B511488fbEaaf4e9B2B9557f6FA672bf90"
       abi: NewbieTask
-      startBlock: 6311643
+      startBlock: 3024994
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -17,10 +17,10 @@ dataSources:
         - NewbieTask
       abis:
         - name: NewbieTask
-          file: ./abis/UserLocation.json
+          file: ./abis/NewbieTask.json
       eventHandlers:
-        - event: ClaimRecord(uint256,address,uint256,uint256,uint256)
-          handler: handleClaimRecordLog
+        - event: ClaimLog(address,uint256,uint256)
+          handler: handleClaimLog
 
       file: ./src/IntoNewbieTask.ts
   

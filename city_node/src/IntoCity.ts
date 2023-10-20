@@ -3,6 +3,7 @@ import {
 } from "../generated/IntoCity/IntoCity"
 import {RechargeRecord} from "../generated/schema" // 这里的名字随graphQl文件中定义的Entity
 import {Address, BigInt, Bytes} from "@graphprotocol/graph-ts";
+import {timestampToDatetime} from "./utils/constants";
 
 // 这里面可以写多个handler
 
@@ -12,7 +13,7 @@ export function handleRechargeRecordLog(event: RechargeRecordEvent): void {
     rechargeRecord.countyId = event.params.countyId
     rechargeRecord.amount = event.params.amount
     rechargeRecord.txHash = event.transaction.hash
-    rechargeRecord.ctime = event.block.timestamp
+    rechargeRecord.ctime = timestampToDatetime(event.block.timestamp.toI64())
     rechargeRecord.save()
 }
 

@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: NewbieTask
-    network: match_testnet
+    network: match_mainnet
     source:
-      address: "0x9A448518168df1a49ad4B018a208821b967D147A"
+      address: "0xD3bB31B511488fbEaaf4e9B2B9557f6FA672bf90"
       abi: NewbieTask
-      startBlock: 6311643
+      startBlock: 3024994
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7

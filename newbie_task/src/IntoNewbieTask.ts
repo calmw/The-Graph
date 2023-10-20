@@ -1,6 +1,7 @@
 import {ClaimLog as ClaimLogEvent} from "../generated/NewbieTask/NewbieTask"
 import {ClaimLog} from "../generated/schema"
 import {Address, BigInt, Bytes} from "@graphprotocol/graph-ts";
+import {timestampToDatetime} from "./utils/constants";
 
 // 这里面可以写多个handler
 
@@ -10,7 +11,7 @@ export function handleClaimLog(event: ClaimLogEvent): void {
     claimRecord.claimType = event.params.claimType
     claimRecord.amount = event.params.amount
     claimRecord.txHash = event.transaction.hash
-    claimRecord.ctime = event.block.timestamp
+    claimRecord.ctime = timestampToDatetime(event.block.timestamp.toI64())
     claimRecord.save()
 }
 
